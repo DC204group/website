@@ -230,7 +230,6 @@ a {
   font-size: 1.1rem;
   color: var(--text-dim);
   margin: 1rem 0 0;
-  white-space: nowrap;
 }
 
 .prompt {
@@ -286,7 +285,8 @@ main {
 
 .about {
   --panel-accent: var(--cyan);
-  margin-bottom: 3.5rem;
+  width: calc(100% - 2rem);
+  margin: 0 auto 3.5rem auto;
 }
 
 .about p {
@@ -297,8 +297,8 @@ main {
   --panel-accent: var(--green);
   background: rgba(57, 255, 136, 0.05);
   max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
+  width: calc(100% - 2rem);
+  margin: 0 auto 3.5rem auto;
 }
 
 .links p {
@@ -406,9 +406,7 @@ main {
   }
 
   .tagline {
-    font-size: 0.95rem;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    font-size: 0.9rem;
   }
 
   .widget-grid {
