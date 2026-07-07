@@ -1,13 +1,12 @@
 :root {
   --bg: #05080c;
   --bg-deep: #000305;
+  --bg-gradient: #071c22;
   --panel-tint: rgba(15, 205, 250, 0.04);
 
   --cyan: #0fcdfa;
   --cyan-dim: #0a7fa3;
   --green: #39ff88;
-  --green-dim: #1e8f52;
-  --red: #ff2d55;
 
   --text: #d6e4ec;
   --text-dim: #7c93a3;
@@ -156,7 +155,7 @@ a {
 .hero {
   background-image:
     radial-gradient(rgba(57, 255, 136, 0.06) 1px, transparent 1px),
-    linear-gradient(160deg, var(--bg-deep) 0%, #071c22 140%);
+    linear-gradient(160deg, var(--bg-deep) 0%, var(--bg-gradient) 140%);
   background-size: 24px 24px, 100% 100%;
   padding: 3.5rem 0;
   text-align: center;
@@ -218,7 +217,6 @@ a {
 }
 
 .eyebrow {
-  font-family: var(--font);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 0.78rem;
@@ -251,6 +249,7 @@ a {
 
 main {
   padding: 3.5rem 0;
+  margin-top: 0;
 }
 
 .panel {
@@ -289,20 +288,12 @@ main {
   margin: 0 auto 3.5rem auto;
 }
 
-.about p {
-  color: var(--text-dim);
-}
-
 .links {
   --panel-accent: var(--green);
   background: rgba(57, 255, 136, 0.05);
   max-width: 720px;
   width: calc(100% - 2rem);
   margin: 0 auto 3.5rem auto;
-}
-
-.links p {
-  color: var(--text-dim);
 }
 
 .cta {
@@ -386,10 +377,6 @@ footer {
   padding: 2rem 1.5rem 3rem;
   color: var(--text-dim);
   font-size: 0.85rem;
-}
-
-main {
-  margin-top: 0;
 }
 
 @media (max-width: 600px) {
