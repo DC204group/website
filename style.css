@@ -76,12 +76,89 @@ a {
   color: var(--green);
 }
 
+.widget-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 720px;
+  margin: 3rem auto 0;
+}
+
+.hero .widget-grid {
+  margin-top: 3.5rem;
+  margin-bottom: 0;
+}
+
+.widget {
+  display: block;
+  text-decoration: none;
+  color: var(--green);
+  cursor: pointer;
+  padding: 1rem 1.75rem;
+  background: transparent;
+  border: 2px solid var(--green);
+  font-family: var(--font);
+  font-weight: 700;
+  border-radius: 4px;
+  box-shadow: 0 0 14px rgba(57, 255, 136, 0.25);
+  text-align: center;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.widget h3 {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.widget:hover {
+  background: var(--green);
+  color: var(--bg-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 0 22px rgba(57, 255, 136, 0.55);
+}
+
+.site-nav {
+  background-color: var(--bg);
+  border-bottom: 1px solid rgba(15, 205, 250, 0.15);
+  padding: 1.5rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-nav-inner {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.site-nav a {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 0.25rem;
+}
+
+.site-nav a:hover {
+  color: var(--cyan);
+}
+
+.site-nav a.active {
+  color: var(--cyan);
+  border-bottom: 2px solid var(--cyan);
+}
+
 .hero {
   background-image:
     radial-gradient(rgba(57, 255, 136, 0.06) 1px, transparent 1px),
     linear-gradient(160deg, var(--bg-deep) 0%, #071c22 140%);
   background-size: 24px 24px, 100% 100%;
-  padding: 3.5rem 0 4rem;
+  padding: 3.5rem 0;
   text-align: center;
   border-bottom: 2px solid var(--cyan);
   box-shadow: 0 2px 24px rgba(15, 205, 250, 0.25);
@@ -153,6 +230,7 @@ a {
   font-size: 1.1rem;
   color: var(--text-dim);
   margin: 1rem 0 0;
+  white-space: nowrap;
 }
 
 .prompt {
@@ -253,6 +331,56 @@ main {
   box-shadow: 0 0 22px rgba(57, 255, 136, 0.55);
 }
 
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card-list--events {
+  grid-template-columns: 1fr;
+}
+
+.card {
+  padding: 1.5rem;
+  background: var(--panel-tint);
+  border: 1px solid rgba(15, 205, 250, 0.15);
+  border-radius: 4px;
+}
+
+.card h3 {
+  color: var(--cyan);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0 0 0.75rem;
+  text-shadow: 0 0 8px rgba(15, 205, 250, 0.3);
+}
+
+.card p {
+  color: var(--text-dim);
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+.card a {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.card a:hover {
+  color: var(--cyan);
+}
+
+.empty-state {
+  color: var(--text-dim);
+  font-style: italic;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
 footer {
   text-align: center;
   padding: 2rem 1.5rem 3rem;
@@ -260,9 +388,13 @@ footer {
   font-size: 0.85rem;
 }
 
+main {
+  margin-top: 0;
+}
+
 @media (max-width: 600px) {
   .hero {
-    padding: 2.5rem 0 3rem;
+    padding: 2.5rem 0 2rem;
   }
 
   .bison-mark {
@@ -274,6 +406,12 @@ footer {
   }
 
   .tagline {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .widget-grid {
+    grid-template-columns: 1fr;
   }
 }

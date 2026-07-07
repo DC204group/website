@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DC204 — Upcoming Events</title>
+<meta name="description" content="Upcoming events in Winnipeg's tech, security, and maker communities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="derp-bison-alpha.png">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="container site-nav-inner">
+    <a href="index.html">Home</a>
+    <a href="community.html">Community</a>
+    <a href="events.html" class="active">Events</a>
+  </div>
+</nav>
+
+<main>
+  <section class="panel container">
+    <h2>Events</h2>
+    <div id="events-list" class="card-list card-list--events"></div>
+  </section>
+</main>
+
+<footer class="container">
+  <p>DC204 &middot; Winnipeg, MB &middot; 2026</p>
+</footer>
+
+<script src="events-data.js"></script>
+<script src="cards.js"></script>
+<script>
+  const eventsContainer = document.getElementById("events-list");
+
+  // Filter to future events only and sort by date
+  const today = new Date().toISOString().split("T")[0];
+  const futureEvents = events
+    .filter(event => event.date >= today)
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  const cardTemplate = (entry) => `
+    <article class="card">
+      <h3>${entry.name}</h3>
+      <p><strong>${entry.date}</strong></p>
+      <p>${entry.description}</p>
+      ${entry.link ? `<a href="${entry.link}" target="_blank" rel="noopener noreferrer">Learn more &gt;</a>` : ""}
+    </article>
+  `;
+
+  renderCards(eventsContainer, futureEvents, cardTemplate, "// no events scheduled yet_");
+</script>
+
+</body>
+</html>

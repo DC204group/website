@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DC204 — Community</title>
+<meta name="description" content="Discover Winnipeg's makerspaces, groups, and special interest communities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="derp-bison-alpha.png">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="container site-nav-inner">
+    <a href="index.html">Home</a>
+    <a href="community.html" class="active">Community</a>
+    <a href="events.html">Events</a>
+  </div>
+</nav>
+
+<main>
+  <section class="panel container">
+    <h2>Community</h2>
+    <div id="community-list" class="card-list"></div>
+  </section>
+</main>
+
+<footer class="container">
+  <p>DC204 &middot; Winnipeg, MB &middot; 2026</p>
+</footer>
+
+<script src="community-data.js"></script>
+<script src="cards.js"></script>
+<script>
+  const communityContainer = document.getElementById("community-list");
+
+  const cardTemplate = (entry) => `
+    <article class="card">
+      <h3>${entry.name}</h3>
+      <p>${entry.description}</p>
+      ${entry.link ? `<a href="${entry.link}" target="_blank" rel="noopener noreferrer">Visit &gt;</a>` : ""}
+    </article>
+  `;
+
+  renderCards(communityContainer, communityEntries, cardTemplate, "// no entries yet_");
+</script>
+
+</body>
+</html>
