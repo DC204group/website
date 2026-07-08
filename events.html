@@ -37,6 +37,13 @@
 <script>
   const eventsContainer = document.getElementById("events-list");
 
+  // Format date as "Month Day, Year"
+  const formatDate = (dateStr) => {
+    const [year, month, day] = dateStr.split("-");
+    const date = new Date(year, month - 1, day);
+    return date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+  };
+
   // Filter to future events only and sort by date
   const today = new Date().toISOString().split("T")[0];
   const futureEvents = events
@@ -45,8 +52,8 @@
 
   const cardTemplate = (entry) => {
     const dateStr = entry.endDate && entry.endDate !== entry.startDate
-      ? `${entry.startDate} – ${entry.endDate}`
-      : entry.startDate;
+      ? `${formatDate(entry.startDate)} – ${formatDate(entry.endDate)}`
+      : formatDate(entry.startDate);
     return `
       <article class="card">
         <h3>${entry.name}</h3>
