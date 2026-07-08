@@ -44,6 +44,13 @@
     return date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
   };
 
+  // Format time as "HH:MM" to "h:mm AM/PM"
+  const formatTime = (timeStr) => {
+    const [hours, minutes] = timeStr.split(":");
+    const date = new Date(2026, 0, 1, hours, minutes);
+    return date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", meridiem: "short" });
+  };
+
   // Filter to future events only and sort by date
   const today = new Date().toISOString().split("T")[0];
   const futureEvents = events
@@ -54,10 +61,20 @@
     const dateStr = entry.endDate && entry.endDate !== entry.startDate
       ? `${formatDate(entry.startDate)} – ${formatDate(entry.endDate)}`
       : formatDate(entry.startDate);
+
+    let timeStr = "";
+    if (entry.startTime && entry.endTime) {
+      timeStr = `<p>${formatTime(entry.startTime)} – ${formatTime(entry.endTime)}</p>`;
+    } else if (entry.startTime) {
+      timeStr = `<p>${formatTime(entry.startTime)}</p>`;
+    }
+
     return `
       <article class="card">
         <h3>${entry.name}</h3>
         <p><strong>${dateStr}</strong></p>
+        ${entry.location ? `<p>${entry.location}</p>` : ""}
+        ${timeStr}
         <p>${entry.description}</p>
         ${entry.link ? `<a href="${entry.link}" target="_blank" rel="noopener noreferrer">Learn more &gt;</a>` : ""}
       </article>
