@@ -40,17 +40,22 @@
   // Filter to future events only and sort by date
   const today = new Date().toISOString().split("T")[0];
   const futureEvents = events
-    .filter(event => event.date >= today)
-    .sort((a, b) => new Date(a.date) - new Date(b.date));
+    .filter(event => event.startDate >= today)
+    .sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
 
-  const cardTemplate = (entry) => `
-    <article class="card">
-      <h3>${entry.name}</h3>
-      <p><strong>${entry.date}</strong></p>
-      <p>${entry.description}</p>
-      ${entry.link ? `<a href="${entry.link}" target="_blank" rel="noopener noreferrer">Learn more &gt;</a>` : ""}
-    </article>
-  `;
+  const cardTemplate = (entry) => {
+    const dateStr = entry.endDate && entry.endDate !== entry.startDate
+      ? `${entry.startDate} – ${entry.endDate}`
+      : entry.startDate;
+    return `
+      <article class="card">
+        <h3>${entry.name}</h3>
+        <p><strong>${dateStr}</strong></p>
+        <p>${entry.description}</p>
+        ${entry.link ? `<a href="${entry.link}" target="_blank" rel="noopener noreferrer">Learn more &gt;</a>` : ""}
+      </article>
+    `;
+  };
 
   renderCards(eventsContainer, futureEvents, cardTemplate, "// no events scheduled yet_");
 </script>

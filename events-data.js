@@ -1,8 +1,9 @@
-// Each entry: { name, date: "YYYY-MM-DD", description, link }
+// Each entry: { name, startDate: "YYYY-MM-DD", endDate: "YYYY-MM-DD" (optional), description, link }
 const events = [
   {
     name: "The Long Con",
-    date: "2026-11-07",
+    startDate: "2026-11-07",
+    endDate: "2026-11-08",
     description: "Information security conference by the community for the community.",
     link: "https://thelongcon.ca/"
   }
